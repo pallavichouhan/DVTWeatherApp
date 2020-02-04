@@ -7,3 +7,35 @@
 //
 
 import Foundation
+
+struct  WeatherUserDefaults {
+
+    let defaults = UserDefaults.standard
+    
+    func setLastTimeAppOpendByUser() {
+        defaults.set(Date(),forKey: K.lastUpdatedTime)
+    }
+    func getLatTimeAppOpenedByuser() -> NSDate {
+        let appLastOpen = defaults.object(forKey: K.lastUpdatedTime)
+        return appLastOpen as! NSDate
+    }
+    func setLocationToFavourites(locationWithNameAndTemp:Array<FavouriteTemperatureData>){
+        
+       defaults.set(try? PropertyListEncoder().encode(locationWithNameAndTemp), forKey:K.favouriteUserLocation)
+        
+    }
+    
+    func getFavouritesLocation() -> Array<FavouriteTemperatureData>?{
+        if let data = defaults.value(forKey:K.favouriteUserLocation) as? Data {
+        let favLocationList = try? PropertyListDecoder().decode(Array<FavouriteTemperatureData>.self, from: data)
+            return favLocationList!
+        }else {
+            return nil
+        }
+    }
+}
+
+struct FavouriteTemperatureData:Codable {
+    let favcity:String
+    let favCityTemperature:Double
+}

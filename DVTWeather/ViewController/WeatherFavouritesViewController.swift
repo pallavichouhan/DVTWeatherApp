@@ -9,38 +9,82 @@
 import UIKit
 
 class WeatherFavouritesViewController: UIViewController {
-    @IBOutlet weak var settingsTableView: UITableView!
+    @IBOutlet weak var favouritesTableView: UITableView!
     
-    var settingList:Array<String> = []
-    var temperatureList:Array<Double> = []
-
+    var favouriteCityList:Array<String> = []
+    var favouriteCityTemperatureList:Array<Double> = []
     
-    var settingViewColor:UIColor = UIColor()
-    var weatherManager = WeatherManager()
+    
+    var favouriteScreenViewColor:UIColor = UIColor()
+    var weatherPresenter = WeatherPresenter()
+    var weatherInteractor:WeatherInteractor?
+    var weatherUserDefaults = WeatherUserDefaults()
+    
     @IBOutlet weak var searchTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
-        settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cellIdentifier)
-        settingsTableView.dataSource = self
-        weatherManager.delegate = self
-        view.backgroundColor = settingViewColor
-        settingsTableView.backgroundColor = UIColor.clear
-        settingsTableView.separatorColor = UIColor.white
+        favouritesTableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cellIdentifier)
+        favouritesTableView.dataSource = self
+
+        view.backgroundColor = favouriteScreenViewColor
+        favouritesTableView.backgroundColor = UIColor.clear
+        favouritesTableView.separatorColor = UIColor.white
+        getFavLocationListFromDefaults()
+        favouritesTableView.reloadData()
+        weatherPresenter.delegate = self
+        weatherInteractor = WeatherInteractor(weatherPresenter: weatherPresenter)
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func closeBtnClicked(_ sender: UIButton) {
+        searchTextField.endEditing(true)
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
+    func getFavLocationListFromDefaults() {
+        print("Get the fav Location List")
+        
+        let favLocations = self.weatherUserDefaults.getFavouritesLocation()
+        for favLoc in favLocations! {
+            let city = favLoc.favcity
+            let temp = favLoc.favCityTemperature
+            favouriteCityList.append(city)
+            favouriteCityTemperatureList.append(temp)
+        }
+    }
+    
+    func saveFavouriteListToDefaults(with cityName:String, temperature:Double) {
+        var favLocationList:Array<FavouriteTemperatureData>=Array()
+        let favLocations = self.weatherUserDefaults.getFavouritesLocation()
+        for favLoc in favLocations! {
+            favLocationList.append(favLoc)
+        }
+        
+        let favLocation:FavouriteTemperatureData = FavouriteTemperatureData(favcity: cityName, favCityTemperature: temperature)
+        favLocationList.append(favLocation)
+        self.weatherUserDefaults.setLocationToFavourites(locationWithNameAndTemp: favLocationList)
+        print(favLocationList)
+    }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+        if segue.identifier == K.weatherMapViewIdentifier {
+            if let mapViewController =  segue.destination as? WeatherMapViewController {
+               
+            }
+        }
+        
+        
+     }
+     
+    
 }
 
 //MARK: - UITextFieldDelegate
@@ -68,24 +112,22 @@ extension WeatherFavouritesViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let city = searchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
+            //weatherInteractor.fetchWeather(cityName: city)
+            weatherInteractor?.fetchWeather(cityName: city)
         }
-        
         searchTextField.text = ""
-        
     }
 }
 
-
-extension WeatherFavouritesViewController: WeatherManagerDelegate {
+extension WeatherFavouritesViewController: WeatherPresenterDelegate {
     
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+    func didUpdateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
-    
-            self.settingList.append(weather.cityName)
-            self.temperatureList.append(weather.temperature)
-            self.settingsTableView.reloadData()
             
+            self.favouriteCityList.append(weather.cityName)
+            self.favouriteCityTemperatureList.append(weather.temperature)
+            self.favouritesTableView.reloadData()
+            self.saveFavouriteListToDefaults(with: weather.cityName, temperature: weather.temperature)
         }
     }
     
@@ -97,21 +139,21 @@ extension WeatherFavouritesViewController: WeatherManagerDelegate {
 
 extension WeatherFavouritesViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingList.count
+        return favouriteCityList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let favCity  = settingList[indexPath.row]
-        let favCitytemperature = String(format: "%.1f"+" °",temperatureList[indexPath.row])
+        let favCity  = favouriteCityList[indexPath.row]
+        let favCitytemperature = String(format: "%.1f"+" °",favouriteCityTemperatureList[indexPath.row])
         
         var cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
-            cell = UITableViewCell(style: .value1, reuseIdentifier: K.cellIdentifier)
-            cell.backgroundColor = settingViewColor
-            cell.textLabel!.text = favCity
-            cell.textLabel?.textColor = UIColor.white
-            cell.detailTextLabel?.text = favCitytemperature
-            cell.detailTextLabel?.textColor = UIColor.white
-            return cell
+        cell = UITableViewCell(style: .value1, reuseIdentifier: K.cellIdentifier)
+        cell.backgroundColor = favouriteScreenViewColor
+        cell.textLabel!.text = favCity
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.text = favCitytemperature
+        cell.detailTextLabel?.textColor = UIColor.white
+        return cell
         
     }
 }

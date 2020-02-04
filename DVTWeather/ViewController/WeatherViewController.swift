@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 class WeatherViewController: UIViewController {
-
+    
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLbl: UILabel!
     @IBOutlet weak var minTempLbl: UILabel!
@@ -18,30 +18,63 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherForcaseTableView: UITableView!
     
     @IBOutlet weak var tempConditionLbl: UILabel!
-    @IBOutlet weak var tempDetailBackgroundView: UIStackView!
-    var weatherManager = WeatherManager()
+    @IBOutlet weak var tempDetailBackgroundView: UIView!
+    
+    @IBOutlet weak var humidityLbl: UILabel!
+    
+    @IBOutlet weak var feelslikeLbl: UILabel!
+    var weatherPresenter = WeatherPresenter()
+    var weatherInteractor : WeatherInteractor?
+    var weatherUserDefaults = WeatherUserDefaults()
     var locationManager = CLLocationManager()
     var forecastTempList:Array<Double> = []
+    var dayTempList:Array<String> = []
+    var imageTempList:Array<String> = []
+    var cityname:String!
+
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         weatherForcaseTableView.dataSource = self
         weatherForcaseTableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-
-        // Do any additional setup after loading the view.
-            locationManager.delegate = self
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.requestLocation()
-            weatherManager.delegate = self
+        weatherForcaseTableView.separatorColor = UIColor.clear
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+       weatherPresenter.delegate = self
+       weatherInteractor = WeatherInteractor(weatherPresenter: weatherPresenter)
+        
     }
+
+    @IBAction func refreshLocation(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
+    
+       // MARK: - Navigation
+       // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == K.favSegueIdentifier {
+            if let favViewController =  segue.destination as? WeatherFavouritesViewController {
+                favViewController.favouriteScreenViewColor = weatherForcaseTableView.backgroundColor!
+            }
+        }
+    }
+       
 }
 
-//MARK: - WeatherManagerDelegate
+//MARK: - WeatherPresenterDelegate
 
-extension WeatherViewController: WeatherManagerDelegate {
+extension WeatherViewController: WeatherPresenterDelegate {
     
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+     func didUpdateWeather(weather: WeatherModel) {
         DispatchQueue.main.async {
             self.temperatureLbl.text = weather.temperatureString
             self.currentTempLbl.text = weather.temperatureString
@@ -51,11 +84,25 @@ extension WeatherViewController: WeatherManagerDelegate {
             self.maxTempLbl.text = weather.maxTemperatureString
             self.tempDetailBackgroundView.backgroundColor = weather.colorName
             self.forecastTempList = weather.forecastList;
+            self.dayTempList = weather.dayList
+            self.imageTempList = weather.forecastImageList
+            self.cityname = weather.cityName
+            self.humidityLbl.text = weather.humidityString
+            self.feelslikeLbl.text = weather.feelsLikeString
+            self.weatherForcaseTableView.backgroundColor = weather.colorName
+            self.weatherForcaseTableView.reloadData()
         }
     }
     
     func didFailWithError(error: Error) {
         print(error)
+        DispatchQueue.main.async {
+
+        let alertController = UIAlertController(title: "Error", message:
+        error.localizedDescription, preferredStyle: .alert)
+           alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+           self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -74,16 +121,24 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            weatherManager.fetchWeather(latitude: lat, longitude: lon)
+            weatherInteractor?.fetchWeather(latitude: lat, longitude: lon)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+        DispatchQueue.main.async {
+
+               let alertController = UIAlertController(title: "Error", message:
+               error.localizedDescription, preferredStyle: .alert)
+                  alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                  self.present(alertController, animated: true, completion: nil)
+               }
+    
     }
 }
 
-//MARK: - UITableViewDelegate,UITableViewDataSource
+//MARK: - UITableViewDataSource
 
 extension WeatherViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,10 +149,16 @@ extension WeatherViewController:UITableViewDataSource {
         
         let temperature  = forecastTempList[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ForecastCell
-        cell.dayForecastLbl.text = "Monday"
-        cell.tempForecastLbl.text = String(format: "0.1f", temperature)
-
+        let day = dayTempList[indexPath.row]
+        let image = imageTempList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! ForecastTableViewCell
+        cell.backgroundColor = weatherForcaseTableView.backgroundColor
+        cell.dayForecastLbl.text = day
+        cell.tempForecastLbl.text = String(format: "%.1f", temperature)
+        cell.imageForecastLbl.image = UIImage(named: image)
+        cell.imageForecastLbl.image?.withTintColor(UIColor.white)
+        
         return cell
     }
 }
