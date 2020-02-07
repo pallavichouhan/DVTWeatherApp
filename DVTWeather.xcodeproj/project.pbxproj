@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		91587A6523E81B3F00CD687D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91587A6423E81B3F00CD687D /* WeatherService.swift */; };
 		91587A6723E81B5000CD687D /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91587A6623E81B5000CD687D /* WeatherPresenter.swift */; };
 		91587A6923E9A64D00CD687D /* WeatherMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91587A6823E9A64D00CD687D /* WeatherMapViewController.swift */; };
+		917908D923ED46640006F457 /* DVTWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917908D823ED46640006F457 /* DVTWeatherTests.swift */; };
+		917908E723ED46EF0006F457 /* DVTWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917908E623ED46EF0006F457 /* DVTWeatherUITests.swift */; };
 		917F855B23E16EBE0044EFDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F855A23E16EBE0044EFDE /* AppDelegate.swift */; };
 		917F855D23E16EBE0044EFDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F855C23E16EBE0044EFDE /* SceneDelegate.swift */; };
 		917F855F23E16EBE0044EFDE /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F855E23E16EBE0044EFDE /* WeatherViewController.swift */; };
@@ -27,6 +29,23 @@
 		F902D76739DCAEDF4098B7E9 /* Pods_DVTWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F4DE6C833BB54B884C8892 /* Pods_DVTWeather.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		917908DB23ED46640006F457 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 917F854F23E16EBE0044EFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 917F855623E16EBE0044EFDE;
+			remoteInfo = DVTWeather;
+		};
+		917908E923ED46EF0006F457 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 917F854F23E16EBE0044EFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 917F855623E16EBE0044EFDE;
+			remoteInfo = DVTWeather;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1ABA3CED208AFCD632BABFF1 /* Pods-DVTWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVTWeather.debug.xcconfig"; path = "Target Support Files/Pods-DVTWeather/Pods-DVTWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		56F4DE6C833BB54B884C8892 /* Pods_DVTWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVTWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +57,12 @@
 		91587A6423E81B3F00CD687D /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		91587A6623E81B5000CD687D /* WeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 		91587A6823E9A64D00CD687D /* WeatherMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapViewController.swift; sourceTree = "<group>"; };
+		917908D623ED46640006F457 /* DVTWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVTWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		917908D823ED46640006F457 /* DVTWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVTWeatherTests.swift; sourceTree = "<group>"; };
+		917908DA23ED46640006F457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		917908E423ED46EF0006F457 /* DVTWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVTWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		917908E623ED46EF0006F457 /* DVTWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVTWeatherUITests.swift; sourceTree = "<group>"; };
+		917908E823ED46EF0006F457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		917F855723E16EBE0044EFDE /* DVTWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVTWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		917F855A23E16EBE0044EFDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		917F855C23E16EBE0044EFDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +78,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		917908D323ED46640006F457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		917908E123ED46EF0006F457 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		917F855423E16EBE0044EFDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,7 +109,6 @@
 				1ABA3CED208AFCD632BABFF1 /* Pods-DVTWeather.debug.xcconfig */,
 				995D79B928CD43DE81E4A3D8 /* Pods-DVTWeather.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,10 +121,54 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		917908CF23ED435F0006F457 /* WeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WeatherTests;
+			sourceTree = "<group>";
+		};
+		917908D023ED43A90006F457 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9129ED1223E4377A008283C9 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		917908D123ED43C30006F457 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				917F855A23E16EBE0044EFDE /* AppDelegate.swift */,
+				917F855C23E16EBE0044EFDE /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		917908D723ED46640006F457 /* DVTWeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				917908D823ED46640006F457 /* DVTWeatherTests.swift */,
+				917908DA23ED46640006F457 /* Info.plist */,
+			);
+			path = DVTWeatherTests;
+			sourceTree = "<group>";
+		};
+		917908E523ED46EF0006F457 /* DVTWeatherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				917908E623ED46EF0006F457 /* DVTWeatherUITests.swift */,
+				917908E823ED46EF0006F457 /* Info.plist */,
+			);
+			path = DVTWeatherUITests;
+			sourceTree = "<group>";
+		};
 		917F854E23E16EBE0044EFDE = {
 			isa = PBXGroup;
 			children = (
 				917F855923E16EBE0044EFDE /* DVTWeather */,
+				917908D723ED46640006F457 /* DVTWeatherTests */,
+				917908E523ED46EF0006F457 /* DVTWeatherUITests */,
 				917F855823E16EBE0044EFDE /* Products */,
 				707E1A3B96DF99FE72B2BB95 /* Pods */,
 				FB677382F1D9738F2C38838E /* Frameworks */,
@@ -97,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				917F855723E16EBE0044EFDE /* DVTWeather.app */,
+				917908D623ED46640006F457 /* DVTWeatherTests.xctest */,
+				917908E423ED46EF0006F457 /* DVTWeatherUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +188,9 @@
 		917F855923E16EBE0044EFDE /* DVTWeather */ = {
 			isa = PBXGroup;
 			children = (
-				9129ED1223E4377A008283C9 /* Constants.swift */,
-				917F855A23E16EBE0044EFDE /* AppDelegate.swift */,
-				917F855C23E16EBE0044EFDE /* SceneDelegate.swift */,
+				917908CF23ED435F0006F457 /* WeatherTests */,
+				917908D023ED43A90006F457 /* Constants */,
+				917908D123ED43C30006F457 /* AppDelegate */,
 				917F857723E19ED20044EFDE /* Model */,
 				917F856E23E19E2D0044EFDE /* ViewController */,
 				9129ED0D23E43505008283C9 /* View */,
@@ -152,6 +236,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		917908D523ED46640006F457 /* DVTWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 917908DD23ED46640006F457 /* Build configuration list for PBXNativeTarget "DVTWeatherTests" */;
+			buildPhases = (
+				917908D223ED46640006F457 /* Sources */,
+				917908D323ED46640006F457 /* Frameworks */,
+				917908D423ED46640006F457 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				917908DC23ED46640006F457 /* PBXTargetDependency */,
+			);
+			name = DVTWeatherTests;
+			productName = DVTWeatherTests;
+			productReference = 917908D623ED46640006F457 /* DVTWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		917908E323ED46EF0006F457 /* DVTWeatherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 917908EB23ED46EF0006F457 /* Build configuration list for PBXNativeTarget "DVTWeatherUITests" */;
+			buildPhases = (
+				917908E023ED46EF0006F457 /* Sources */,
+				917908E123ED46EF0006F457 /* Frameworks */,
+				917908E223ED46EF0006F457 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				917908EA23ED46EF0006F457 /* PBXTargetDependency */,
+			);
+			name = DVTWeatherUITests;
+			productName = DVTWeatherUITests;
+			productReference = 917908E423ED46EF0006F457 /* DVTWeatherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		917F855623E16EBE0044EFDE /* DVTWeather */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 917F856B23E16EBF0044EFDE /* Build configuration list for PBXNativeTarget "DVTWeather" */;
@@ -181,6 +301,14 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Pallavi Chouhan";
 				TargetAttributes = {
+					917908D523ED46640006F457 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 917F855623E16EBE0044EFDE;
+					};
+					917908E323ED46EF0006F457 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 917F855623E16EBE0044EFDE;
+					};
 					917F855623E16EBE0044EFDE = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -200,11 +328,27 @@
 			projectRoot = "";
 			targets = (
 				917F855623E16EBE0044EFDE /* DVTWeather */,
+				917908D523ED46640006F457 /* DVTWeatherTests */,
+				917908E323ED46EF0006F457 /* DVTWeatherUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		917908D423ED46640006F457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		917908E223ED46EF0006F457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		917F855523E16EBE0044EFDE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,6 +405,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		917908D223ED46640006F457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				917908D923ED46640006F457 /* DVTWeatherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		917908E023ED46EF0006F457 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				917908E723ED46EF0006F457 /* DVTWeatherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		917F855323E16EBE0044EFDE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +443,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		917908DC23ED46640006F457 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 917F855623E16EBE0044EFDE /* DVTWeather */;
+			targetProxy = 917908DB23ED46640006F457 /* PBXContainerItemProxy */;
+		};
+		917908EA23ED46EF0006F457 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 917F855623E16EBE0044EFDE /* DVTWeather */;
+			targetProxy = 917908E923ED46EF0006F457 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		917F856023E16EBE0044EFDE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -303,6 +476,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		917908DE23ED46640006F457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVTWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pallavi.DVTWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DVTWeather.app/DVTWeather";
+			};
+			name = Debug;
+		};
+		917908DF23ED46640006F457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVTWeatherTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pallavi.DVTWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DVTWeather.app/DVTWeather";
+			};
+			name = Release;
+		};
+		917908EC23ED46EF0006F457 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVTWeatherUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pallavi.DVTWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DVTWeather;
+			};
+			name = Debug;
+		};
+		917908ED23ED46EF0006F457 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVTWeatherUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pallavi.DVTWeatherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DVTWeather;
+			};
+			name = Release;
+		};
 		917F856923E16EBF0044EFDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -456,6 +707,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		917908DD23ED46640006F457 /* Build configuration list for PBXNativeTarget "DVTWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				917908DE23ED46640006F457 /* Debug */,
+				917908DF23ED46640006F457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		917908EB23ED46EF0006F457 /* Build configuration list for PBXNativeTarget "DVTWeatherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				917908EC23ED46EF0006F457 /* Debug */,
+				917908ED23ED46EF0006F457 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		917F855223E16EBE0044EFDE /* Build configuration list for PBXProject "DVTWeather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -31,25 +31,25 @@ class WeatherMapViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     func getCurrentPlace() {
-      placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-        if let error = error {
-          print("Current Place error: \(error.localizedDescription)")
-          return
-        }
-        if let placeLikelihoodList = placeLikelihoodList {
-          let place = placeLikelihoodList.likelihoods.first?.place
-          if let place = place {
-            self.name = place.name
-            self.address = place.formattedAddress?.components(separatedBy: ", ")
-              .joined(separator: "\n")
-            self.coordinate = place.coordinate
-            let annotation = MKPointAnnotation()
-            //annotation.title = title
-            annotation.coordinate = self.coordinate!
-            self.mapView.addAnnotation(annotation)
-          }
-        }
-      })
+        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
+            if let error = error {
+                print("Current Place error: \(error.localizedDescription)")
+                return
+            }
+            if let placeLikelihoodList = placeLikelihoodList {
+                let place = placeLikelihoodList.likelihoods.first?.place
+                if let place = place {
+                    self.name = place.name
+                    self.address = place.formattedAddress?.components(separatedBy: ", ")
+                        .joined(separator: "\n")
+                    self.coordinate = place.coordinate
+                    let annotation = MKPointAnnotation()
+                    //annotation.title = title
+                    annotation.coordinate = self.coordinate!
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        })
     }
     
 }
