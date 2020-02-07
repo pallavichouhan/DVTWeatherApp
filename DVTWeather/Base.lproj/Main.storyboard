@@ -151,7 +151,7 @@
                                     <constraint firstAttribute="height" constant="40" id="MBG-Sd-WGl"/>
                                     <constraint firstAttribute="width" constant="40" id="jAL-o5-b6U"/>
                                 </constraints>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="text.justify" catalog="system"/>
                                 <connections>
                                     <segue destination="kDx-ie-m9O" kind="show" identifier="favoriteView" id="dbx-mQ-jep"/>
@@ -163,7 +163,7 @@
                                     <constraint firstAttribute="height" constant="40" id="ZS0-mH-UCS"/>
                                     <constraint firstAttribute="width" constant="40" id="sjr-mJ-vlK"/>
                                 </constraints>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="location.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="refreshLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aIu-o4-QhP"/>
@@ -285,7 +285,7 @@
                                     <constraint firstAttribute="height" constant="40" id="WGv-jd-oQL"/>
                                     <constraint firstAttribute="width" constant="40" id="l3l-Mg-AqG"/>
                                 </constraints>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
                                 <connections>
                                     <action selector="searchPressed:" destination="kDx-ie-m9O" eventType="touchUpInside" id="OOY-dc-WQE"/>
@@ -297,7 +297,7 @@
                                     <constraint firstAttribute="width" constant="40" id="IGg-s7-uzF"/>
                                     <constraint firstAttribute="height" constant="40" id="pda-7q-UWL"/>
                                 </constraints>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="multiply.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="closeBtnClicked:" destination="kDx-ie-m9O" eventType="touchUpInside" id="qfy-K6-g1X"/>
