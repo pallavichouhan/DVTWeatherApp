@@ -64,6 +64,7 @@ struct WeatherService {
             let minTemp = list[0].main.temp_min
             let maxTemp = list[0].main.temp_max
             let cityname = city.name
+            let coordinate = city.coord
             let feelsLike = list[0].main.feels_like
             let humidity:Int = Int(list[0].main.humidity)
            
@@ -95,7 +96,7 @@ struct WeatherService {
             }
             
             //Saving the weather forecast into model
-            let weather = WeatherModel(conditionId: id, tempconditionName: name, temperature: temp, minTemperature: minTemp, maxTemperature:maxTemp,forecastList: tempArray,dayList: dayArray,forecastImageList: tempImageArray,cityName: cityname,feelslike:feelsLike,humidity:humidity )
+            let weather = WeatherModel(conditionId: id, tempconditionName: name, temperature: temp, minTemperature: minTemp, maxTemperature:maxTemp,forecastList: tempArray,dayList: dayArray,forecastImageList: tempImageArray,cityName: cityname,feelslike:feelsLike,humidity:humidity,coordinate:coordinate)
             return weather
             
         } catch {

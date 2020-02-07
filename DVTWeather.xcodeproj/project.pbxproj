@@ -188,12 +188,12 @@
 		917F855923E16EBE0044EFDE /* DVTWeather */ = {
 			isa = PBXGroup;
 			children = (
-				917908CF23ED435F0006F457 /* WeatherTests */,
 				917908D023ED43A90006F457 /* Constants */,
 				917908D123ED43C30006F457 /* AppDelegate */,
 				917F857723E19ED20044EFDE /* Model */,
 				917F856E23E19E2D0044EFDE /* ViewController */,
 				9129ED0D23E43505008283C9 /* View */,
+				917908CF23ED435F0006F457 /* WeatherTests */,
 				917F856323E16EBF0044EFDE /* Assets.xcassets */,
 				917F856023E16EBE0044EFDE /* Main.storyboard */,
 				917F856523E16EBF0044EFDE /* LaunchScreen.storyboard */,

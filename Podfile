@@ -7,4 +7,5 @@ target 'DVTWeather' do
   use_frameworks!
 
   pod 'GooglePlaces'
+  pod 'GoogleMaps'
 end

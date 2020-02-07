@@ -15,7 +15,6 @@ struct K {
     
     static let favouriteAlertMsg =  "The current location is saved as favourite"
     
-    
     static let lastUpdatedTime = "TheLastTimeUserOpenedTheApp"
     static let favouriteUserLocation  = "FavouriteUserLocation"
 }

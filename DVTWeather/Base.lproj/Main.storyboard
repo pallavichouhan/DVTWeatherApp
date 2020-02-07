@@ -241,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p7l-oI-Ehk">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="792"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="L9Z-zV-kKw">
@@ -303,17 +303,6 @@
                                     <action selector="closeBtnClicked:" destination="kDx-ie-m9O" eventType="touchUpInside" id="qfy-K6-g1X"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXv-Jq-2VP">
-                                <rect key="frame" x="187" y="104.66666666666667" width="40" height="38.666666666666671"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="oL5-EW-Ea6"/>
-                                    <constraint firstAttribute="width" constant="40" id="zIR-17-cSj"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="map" catalog="system"/>
-                                <connections>
-                                    <segue destination="JHf-rW-sOV" kind="show" identifier="weatherMapView" id="16n-AW-gxH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -322,12 +311,10 @@
                             <constraint firstItem="DYM-d7-BZB" firstAttribute="trailing" secondItem="5Nx-aA-qDh" secondAttribute="trailing" constant="5" id="D3L-yd-mXV"/>
                             <constraint firstItem="hiA-UK-0dm" firstAttribute="top" secondItem="DYM-d7-BZB" secondAttribute="top" id="JiP-Ux-FoR"/>
                             <constraint firstItem="p7l-oI-Ehk" firstAttribute="leading" secondItem="DYM-d7-BZB" secondAttribute="leading" id="QIj-RB-Nc1"/>
-                            <constraint firstItem="p7l-oI-Ehk" firstAttribute="top" secondItem="DYM-d7-BZB" secondAttribute="top" constant="100" id="VEl-GE-Ub0"/>
+                            <constraint firstItem="p7l-oI-Ehk" firstAttribute="top" secondItem="DYM-d7-BZB" secondAttribute="top" constant="60" id="VEl-GE-Ub0"/>
                             <constraint firstItem="hiA-UK-0dm" firstAttribute="leading" secondItem="dpv-BB-7vZ" secondAttribute="trailing" constant="5" id="XFa-0i-f90"/>
-                            <constraint firstItem="kXv-Jq-2VP" firstAttribute="centerX" secondItem="DYM-d7-BZB" secondAttribute="centerX" id="bkL-LS-9GP"/>
                             <constraint firstItem="5Nx-aA-qDh" firstAttribute="leading" secondItem="hiA-UK-0dm" secondAttribute="trailing" constant="8" id="cso-vU-dFb"/>
                             <constraint firstItem="p7l-oI-Ehk" firstAttribute="bottom" secondItem="DYM-d7-BZB" secondAttribute="bottom" constant="34" id="dmT-cX-tzT"/>
-                            <constraint firstItem="kXv-Jq-2VP" firstAttribute="top" secondItem="DYM-d7-BZB" secondAttribute="top" constant="60" id="jF0-0f-zba"/>
                             <constraint firstItem="DYM-d7-BZB" firstAttribute="trailing" secondItem="p7l-oI-Ehk" secondAttribute="trailing" id="kNU-2w-3Jj"/>
                             <constraint firstItem="dpv-BB-7vZ" firstAttribute="leading" secondItem="DYM-d7-BZB" secondAttribute="leading" constant="5" id="u5e-Wu-DbL"/>
                         </constraints>
@@ -337,6 +324,7 @@
                     <connections>
                         <outlet property="favouritesTableView" destination="p7l-oI-Ehk" id="Rn2-9J-BQO"/>
                         <outlet property="searchTextField" destination="hiA-UK-0dm" id="lps-PT-HvW"/>
+                        <segue destination="JHf-rW-sOV" kind="show" identifier="weatherMapView" id="Yo5-13-GgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYS-TG-eCG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -351,9 +339,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zxq-x5-rvt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-eM-aE6">
                                 <rect key="frame" x="0.0" y="45.000000000000007" width="40" height="38.666666666666664"/>
                                 <constraints>
@@ -370,18 +355,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="100-cJ-iSq" firstAttribute="bottom" secondItem="zxq-x5-rvt" secondAttribute="bottom" id="MLC-hM-naN"/>
                             <constraint firstItem="YCv-eM-aE6" firstAttribute="leading" secondItem="100-cJ-iSq" secondAttribute="leading" id="WZ4-Vh-rrb"/>
-                            <constraint firstItem="100-cJ-iSq" firstAttribute="trailing" secondItem="zxq-x5-rvt" secondAttribute="trailing" id="apP-UW-ZlB"/>
                             <constraint firstItem="YCv-eM-aE6" firstAttribute="top" secondItem="100-cJ-iSq" secondAttribute="top" id="dZh-CM-Mg7"/>
-                            <constraint firstItem="zxq-x5-rvt" firstAttribute="top" secondItem="100-cJ-iSq" secondAttribute="top" id="vNI-rq-yMK"/>
-                            <constraint firstItem="zxq-x5-rvt" firstAttribute="leading" secondItem="100-cJ-iSq" secondAttribute="leading" id="zfI-SS-MeE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="100-cJ-iSq"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZnJ-MF-msi"/>
                     <connections>
-                        <outlet property="mapView" destination="zxq-x5-rvt" id="VIq-sQ-4nk"/>
+                        <outlet property="closeBtn" destination="YCv-eM-aE6" id="Hkq-nd-XcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P2C-6t-V5i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -392,7 +373,6 @@
     <resources>
         <image name="location.circle.fill" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="map" catalog="system" width="64" height="56"/>
         <image name="multiply.circle.fill" catalog="system" width="64" height="60"/>
         <image name="text.justify" catalog="system" width="64" height="50"/>
     </resources>

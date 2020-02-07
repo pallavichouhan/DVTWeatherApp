@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct WeatherData: Codable { 
     let list: [List]
@@ -14,6 +15,7 @@ struct WeatherData: Codable {
 }
 struct City:Codable {
     let name:String
+    let coord:Dictionary<String,Double>
 }
 struct List: Codable {
    let main: Main

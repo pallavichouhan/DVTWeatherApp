@@ -19,9 +19,9 @@ struct  WeatherUserDefaults {
         let appLastOpen = defaults.object(forKey: K.lastUpdatedTime)
         return appLastOpen as! NSDate
     }
-    func setLocationToFavourites(locationWithNameAndTemp:Array<FavouriteTemperatureData>){
+    func setLocationToFavourites(locationWithNameTempAndCoord:Array<FavouriteTemperatureData>){
         
-       defaults.set(try? PropertyListEncoder().encode(locationWithNameAndTemp), forKey:K.favouriteUserLocation)
+       defaults.set(try? PropertyListEncoder().encode(locationWithNameTempAndCoord), forKey:K.favouriteUserLocation)
         
     }
     
@@ -38,4 +38,6 @@ struct  WeatherUserDefaults {
 struct FavouriteTemperatureData:Codable {
     let favcity:String
     let favCityTemperature:Double
+    let favCityLatitude:Double
+    let favCityLongitude:Double
 }

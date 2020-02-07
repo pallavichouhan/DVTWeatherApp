@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 struct WeatherModel {
     let conditionId: Int
@@ -21,6 +22,7 @@ struct WeatherModel {
     let cityName:String
     let feelslike:Double
     let humidity:Int
+    let coordinate:Dictionary<String,Double>
     
     var temperatureString: String {
         return String(format: "%.1f"+" °", temperature)
@@ -61,15 +63,15 @@ struct WeatherModel {
     var colorName: UIColor {
         switch conditionId {
         case 200...622:
-            return UIColor(red: 77.0/255.0, green: 171.0/255.0, blue: 47.0/255.0, alpha: 1)
+            return UIColor(red: 87.0/255.0, green: 87.0/255.0, blue: 92.0/255.0, alpha: 1)
         case 701...781:
-            return UIColor(red: 84.0/255.0, green: 113.0/255.0, blue: 122.0/255.0, alpha: 1)
+            return UIColor(red: 90.0/255.0, green: 112.0/255.0, blue: 121.0/255.0, alpha: 1)
         case 800:
-            return UIColor(red: 71.0/255.0, green: 171.0/255.0, blue: 47.0/255.0, alpha: 1)
+            return UIColor(red: 99.0/255.0, green: 168.0/255.0, blue: 67.0/255.0, alpha: 1)
         case 801...804:
-            return UIColor(red: 84.0/255.0, green: 113.0/255.0, blue: 122.0/255.0, alpha: 1)
+            return UIColor(red: 90.0/255.0, green: 112.0/255.0, blue: 121.0/255.0, alpha: 1)
         default:
-            return UIColor(red: 84.0/255.0, green: 113.0/255.0, blue: 122.0/255.0, alpha: 1)
+            return UIColor(red: 90.0/255.0, green: 112.0/255.0, blue: 121.0/255.0, alpha: 1)
         }
     }
     

@@ -8,50 +8,59 @@
 
 import UIKit
 import GooglePlaces
-import GoogleMapsBase
+import GoogleMaps
 import MapKit
+
+//import CoreLocation
 
 class WeatherMapViewController: UIViewController {
     
     var coordinate: CLLocationCoordinate2D?
     var name:String?
     var address:String?
-        
-    var placesClient: GMSPlacesClient!
-    @IBOutlet weak var mapView: MKMapView!
+    var latitude:Double?
+    var longitude:Double?
+    var geocoder = GMSGeocoder()
     
+    var placesClient: GMSPlacesClient!
+    var mapView: GMSMapView!
+    
+    @IBOutlet weak var closeBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         placesClient = GMSPlacesClient.shared()
-        getCurrentPlace()
+        getTheCompleteAddressfrom(lat: latitude!, long: longitude!)
+        let camera = GMSCameraPosition.camera(withLatitude: latitude!, longitude:longitude! , zoom: 6.0)
+        //mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:closeBtn.frame.origin.y+closeBtn.frame.size.height, width: view.frame.size.width, height: view.frame.size.height), camera: camera)
+        closeBtn.superview?.bringSubviewToFront(closeBtn)
+        view.addSubview(mapView)
     }
     
     @IBAction func closeBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    func getCurrentPlace() {
-        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
+
+    func getTheCompleteAddressfrom(lat:Double,long:Double) {
+        geocoder.reverseGeocodeCoordinate(CLLocationCoordinate2D(latitude:lat,longitude:long)) { (response, error) in
             if let error = error {
                 print("Current Place error: \(error.localizedDescription)")
                 return
             }
-            if let placeLikelihoodList = placeLikelihoodList {
-                let place = placeLikelihoodList.likelihoods.first?.place
-                if let place = place {
-                    self.name = place.name
-                    self.address = place.formattedAddress?.components(separatedBy: ", ")
-                        .joined(separator: "\n")
-                    self.coordinate = place.coordinate
-                    let annotation = MKPointAnnotation()
-                    //annotation.title = title
-                    annotation.coordinate = self.coordinate!
-                    self.mapView.addAnnotation(annotation)
-                }
+            if let placeDetails = response {
+                let firstResult = placeDetails.firstResult()
+                let city = firstResult?.locality
+                let country = firstResult?.country
+                
+               // Creates a marker in the center of the map.
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: self.latitude!, longitude: self.longitude!)
+                marker.title = city
+                marker.snippet = country
+                marker.map = self.mapView
             }
-        })
+        }
     }
     
 }
-
-

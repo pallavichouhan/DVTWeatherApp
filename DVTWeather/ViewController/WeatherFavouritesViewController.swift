@@ -13,12 +13,18 @@ class WeatherFavouritesViewController: UIViewController {
     
     var favouriteCityList:Array<String> = []
     var favouriteCityTemperatureList:Array<Double> = []
+    var favouriteCityLatitudeList:Array<Double> = []
+    var favouriteCityLongitudeList:Array<Double> = []
+    
     
     
     var favouriteScreenViewColor:UIColor = UIColor()
     var weatherPresenter = WeatherPresenter()
     var weatherInteractor:WeatherInteractor?
     var weatherUserDefaults = WeatherUserDefaults()
+    
+    var latitude:Double?
+    var longitude:Double?
     
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -27,7 +33,8 @@ class WeatherFavouritesViewController: UIViewController {
         searchTextField.delegate = self
         favouritesTableView.register(UITableViewCell.self, forCellReuseIdentifier: K.cellIdentifier)
         favouritesTableView.dataSource = self
-
+        favouritesTableView.delegate = self
+        
         view.backgroundColor = favouriteScreenViewColor
         favouritesTableView.backgroundColor = UIColor.clear
         favouritesTableView.separatorColor = UIColor.white
@@ -35,7 +42,7 @@ class WeatherFavouritesViewController: UIViewController {
         favouritesTableView.reloadData()
         weatherPresenter.delegate = self
         weatherInteractor = WeatherInteractor(weatherPresenter: weatherPresenter)
-
+        
     }
     
     @IBAction func closeBtnClicked(_ sender: UIButton) {
@@ -46,45 +53,49 @@ class WeatherFavouritesViewController: UIViewController {
     func getFavLocationListFromDefaults() {
         print("Get the fav Location List")
         
-        let favLocations = self.weatherUserDefaults.getFavouritesLocation()
-        for favLoc in favLocations! {
-            let city = favLoc.favcity
-            let temp = favLoc.favCityTemperature
-            favouriteCityList.append(city)
-            favouriteCityTemperatureList.append(temp)
+        let locations = self.weatherUserDefaults.getFavouritesLocation()
+        if let favLocations = locations {
+            for favLoc in favLocations {
+                let city = favLoc.favcity
+                let temp = favLoc.favCityTemperature
+                favouriteCityList.append(city)
+                favouriteCityTemperatureList.append(temp)
+                favouriteCityLatitudeList.append(favLoc.favCityLatitude)
+                favouriteCityLongitudeList.append(favLoc.favCityLongitude)
+                
+            }
         }
     }
     
-    func saveFavouriteListToDefaults(with cityName:String, temperature:Double) {
+    func saveFavouriteListToDefaults(with cityName:String, temperature:Double, latitude:Double, longitude:Double) {
         var favLocationList:Array<FavouriteTemperatureData>=Array()
-        let favLocations = self.weatherUserDefaults.getFavouritesLocation()
-        for favLoc in favLocations! {
-            favLocationList.append(favLoc)
+        let locations = self.weatherUserDefaults.getFavouritesLocation()
+        if let favLocations = locations {
+            for favLoc in favLocations {
+                favLocationList.append(favLoc)
+            }
         }
         
-        let favLocation:FavouriteTemperatureData = FavouriteTemperatureData(favcity: cityName, favCityTemperature: temperature)
+        let favLocation:FavouriteTemperatureData = FavouriteTemperatureData(favcity: cityName, favCityTemperature: temperature,favCityLatitude: latitude,favCityLongitude: longitude)
         favLocationList.append(favLocation)
-        self.weatherUserDefaults.setLocationToFavourites(locationWithNameAndTemp: favLocationList)
+        self.weatherUserDefaults.setLocationToFavourites(locationWithNameTempAndCoord: favLocationList)
         print(favLocationList)
     }
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
         if segue.identifier == K.weatherMapViewIdentifier {
             if let mapViewController =  segue.destination as? WeatherMapViewController {
-               
+                mapViewController.latitude = self.latitude
+                mapViewController.longitude = self.longitude
             }
         }
-        
-        
-     }
-     
-    
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -127,7 +138,11 @@ extension WeatherFavouritesViewController: WeatherPresenterDelegate {
             self.favouriteCityList.append(weather.cityName)
             self.favouriteCityTemperatureList.append(weather.temperature)
             self.favouritesTableView.reloadData()
-            self.saveFavouriteListToDefaults(with: weather.cityName, temperature: weather.temperature)
+            self.latitude = weather.coordinate["lat"]!
+            self.longitude = weather.coordinate["lon"]!
+            self.favouriteCityLatitudeList.append(self.latitude!)
+            self.favouriteCityLongitudeList.append( self.longitude!)
+            self.saveFavouriteListToDefaults(with: weather.cityName, temperature: weather.temperature,latitude:self.latitude! ,longitude:self.longitude! )
         }
     }
     
@@ -145,7 +160,6 @@ extension WeatherFavouritesViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let favCity  = favouriteCityList[indexPath.row]
         let favCitytemperature = String(format: "%.1f"+" °",favouriteCityTemperatureList[indexPath.row])
-        
         var cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
         cell = UITableViewCell(style: .value1, reuseIdentifier: K.cellIdentifier)
         cell.backgroundColor = favouriteScreenViewColor
@@ -155,5 +169,16 @@ extension WeatherFavouritesViewController:UITableViewDataSource {
         cell.detailTextLabel?.textColor = UIColor.white
         return cell
         
+    }
+}
+
+extension WeatherFavouritesViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let favCityLat = favouriteCityLatitudeList[indexPath.row]
+        let favCityLon = favouriteCityLongitudeList[indexPath.row]
+        self.latitude = favCityLat
+        self.longitude = favCityLon
+        
+        performSegue(withIdentifier: K.weatherMapViewIdentifier, sender: self)
     }
 }

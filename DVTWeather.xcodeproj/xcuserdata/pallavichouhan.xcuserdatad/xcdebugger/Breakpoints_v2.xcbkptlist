@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3C497B49-DCD9-42D6-8CA0-A9317F6836A8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DVTWeather/ViewController/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "didUpdateWeather(weather:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D84947B5-29AF-4711-8CAB-471E30F0380B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -32,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "humidityString"
-            landmarkType = "24">
+            landmarkName = "WeatherModel"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "D84947B5-29AF-4711-8CAB-471E30F0380B - 38c54c4d1a3be2ff"
@@ -167,22 +151,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "71BA2125-2CC4-4F34-B263-DCEE2E2C3649"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DVTWeather/ViewController/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0722932E-5922-41E7-9CE7-3D4B83534763"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -254,9 +222,9 @@
             filePath = "DVTWeather/ViewController/WeatherFavouritesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "saveFavouriteListToDefaults(with:temperature:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "saveFavouriteListToDefaults(with:temperature:latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -295,22 +263,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D8EED99B-E884-4658-996B-2843C1F21F0F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DVTWeather/ViewController/WeatherViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "didUpdateWeather(weather:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "924C20C9-C417-4117-A597-7C83B7D24D3E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -318,10 +270,10 @@
             filePath = "DVTWeather/ViewController/WeatherFavouritesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "didUpdateWeather(weather:)"
-            landmarkType = "7">
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "WeatherFavouritesViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
